@@ -39,20 +39,20 @@ describe('A stack', function(){
     stack = new Stack();
   });
 
-  it('adds and removes an item', function(){
+  xit('adds and removes an item', function(){
     stack.add(uniqueObj);
     expect(stack.remove()).toBe(uniqueObj);
   });
 
   // LIFO: Last In, First Out
-  it('adds and removes three items in a LIFO way', function(){
+  xit('adds and removes three items in a LIFO way', function(){
     stack.add(5).add(uniqueObj).add('fullstack');
     expect(stack.remove()).toBe('fullstack');
     expect(stack.remove()).toBe(uniqueObj);
     expect(stack.remove()).toBe(5);
   });
 
-  it('can handle interspersed add and remove', function(){
+  xit('can handle interspersed add and remove', function(){
     stack.add(1);
     expect(stack.remove()).toBe(1);
     stack.add(2).add(3);
@@ -71,7 +71,7 @@ describe('A doubly-linked list', function(){
     list = new LinkedList();
   });
 
-  it('can add to the tail', function(){
+  xit('can add to the tail', function(){
     list.addToTail(uniqueObj);
     expect(list.head).toBe(list.tail);
     expect(list.tail).toEqual({
@@ -81,7 +81,7 @@ describe('A doubly-linked list', function(){
     });
   });
 
-  it('can add two items', function(){
+  xit('can add two items', function(){
     list.addToTail('first').addToTail('second');
     expect(list.head).toEqual({
       item: 'first',
@@ -95,7 +95,7 @@ describe('A doubly-linked list', function(){
     });
   });
 
-  it('can add multiple items', function(){
+  xit('can add multiple items', function(){
     list.addToTail(1).addToTail(2).addToTail(3);
     expect(list.head.prev).toBe(null);
     expect(list.tail.next).toBe(null);
@@ -107,7 +107,7 @@ describe('A doubly-linked list', function(){
     expect(list.tail.prev.prev).toBe(list.head);
   });
 
-  it('can remove items cleanly', function(done){
+  xit('can remove items cleanly', function(done){
     console.log('test', list);
     list.addToTail(500).addToTail(404);
     expect(list.removeFromTail()).toBe(404);
@@ -119,7 +119,7 @@ describe('A doubly-linked list', function(){
 
   // if you have problems with this spec, move on to `Hash`. However,
   // this `forEach` method can help with the final `Hash` spec.
-  it('can call a function on each node item', function(){
+  xit('can call a function on each node item', function(){
     list.addToTail('Gandalf')
         .addToTail('Dumbledore')
         .addToTail('Merlin');
@@ -142,13 +142,13 @@ describe('A hash table', function(){
     hash = new Hash();
   });
 
-  it('has linked lists in each bucket', function(){
+  xit('has linked lists in each bucket', function(){
     for (var i = 0; i < hash.buckets.length; i++) {
       expect(hash.buckets[i] instanceof LinkedList).toBe(true);
     }
   });
 
-  it('uses a hashing function to add hash nodes to the correct linked list', function(){
+  xit('uses a hashing function to add hash nodes to the correct linked list', function(){
     hash.set('name', 'Harry Potter');
     // `_hash('name')` returns 17
     // use the linked list `addToTail`
@@ -159,13 +159,13 @@ describe('A hash table', function(){
     });
   });
 
-  it('can add multiple items', function(){
+  xit('can add multiple items', function(){
     hash.set('house', 'Gryffindor').set('glasses', true);
     expect(hash.buckets[ 8].head.item.value).toBe('Gryffindor');
     expect(hash.buckets[14].head.item.value).toBe(true);
   });
 
-  it('handles collision by adding to the list', function(){
+  xit('handles collision by adding to the list', function(){
     hash.set('node', 'Pearl St.').set('done', 'Hanover Sq.');
     // 'node' and 'done' both `_hash()` to the number 2!
     var head = hash.buckets[2].head;
@@ -173,13 +173,13 @@ describe('A hash table', function(){
     expect(head.next.item.value).toBe('Hanover Sq.');
   });
 
-  it('returns items based on their key', function(){
+  xit('returns items based on their key', function(){
     hash.set('status', 200).set('message', 'success');
     expect(hash.get('status')).toBe(200);
     expect(hash.get('message')).toBe('success');
   });
 
-  it('returns the most recent value for a given key', function(){
+  xit('returns the most recent value for a given key', function(){
     hash.set('year', 'MMXV').set('year', 2015).set('month', 3);
     // hint: use the linked list `forEach` method
     expect(hash.get('year')).toBe(2015);
